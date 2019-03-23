@@ -302,10 +302,19 @@ This is gif images of final result
 
 # Conclusion & Discussion
 
-### 1. About combination of gradient threshold
+### 1. About Canny edge detection
 
+지금 영상은 깔끔한 포장도로에 라인이 명확하게 구분되기 때문에 canny 만 적용해서도 라인을 검출할 수 있었지만
 
+비포장 도로가 나온다던지 그림자가 생기거나 날씨가 흐려져서 라인의 gradient 가 크지 않으면 이 방법으로는 라인을 검출 할 수 없음
 
+### 2. About masking
+
+마스킹을 한다는건 라인이 그 안에 있다는 가정을 하고 들어가는건데
+
+실제 주행을 하다보면 선을 벗어날 수 있기 때문에 이런 가정을 실제 차에 적용하는건 어렵다
+
+궁극적으로는 머신러닝을 이용하여 스스로 라인을 찾아내도록 가는게 
 
 
 
