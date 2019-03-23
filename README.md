@@ -1,7 +1,5 @@
 # UDACITY-SELF-DRIVING-CAR-NANODEGREE-project1.-Finding-Lane-Lines
 
-# UDACITY-SELF-DRIVING-CAR-NANODEGREE-project2.-Advanced-Lane-Finding
-
 
 [//]: # (Image References)
 
