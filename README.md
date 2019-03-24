@@ -316,26 +316,32 @@ This is gif images of final result
 
 ### 1. About Canny edge detection
 
-지금 영상은 깔끔한 포장도로에 라인이 명확하게 구분되기 때문에 canny 만 적용해서도 라인을 검출할 수 있었지만
+Video I used now have always good condition road so that I can only apply Canny edge detection
 
-비포장 도로가 나온다던지 그림자가 생기거나 날씨가 흐려져서 라인의 gradient 가 크지 않으면 이 방법으로는 라인을 검출 할 수 없음
+But in real condition, there may appear so much unexpected conditions like non-pavement, shadow, unclear weather
+
+Then it makes image gradient not clear, as a result I will not detect lines using this method
+
 
 ### 2. About masking
 
-마스킹을 한다는건 라인이 그 안에 있다는 가정을 하고 들어가는건데
+In this method, I applied masking that restrict area detecting lines
 
-실제 주행을 하다보면 선을 벗어날 수 있기 때문에 이런 가정을 실제 차에 적용하는건 어렵다
+Conversely thinking, that means if there were no lines in that area, I cannot find lines
 
-궁극적으로는 머신러닝을 이용하여 스스로 라인을 찾아내도록 가는게 
+So it cannot apply to real condition self-driving car
+
+Maybe eventually I have to adapt machine learning to detect lines wherever it be
+
 
 ### 3. Challenge video
 
-이 영상에서는 중간에 비포장 도로가 나오기 때문에 canny 만으로 라인을 검출하려면 범위를 다시 튜닝해야 되고
+Udacity provided challenge videos
 
-라인 바로 옆에 라인으로 판단할 수 있는 비포장 라인이 있기 때문에 masking 구간도 세밀하게 튜닝이 
+That have various challenging condition like non-pavement, shadow
 
+So if I want to use only canny edge detection, it maybe really hard tuning, and that condition may only good for that video
 
-
-
+If time permits, I will apply algorithm to challenge videos not only using this method but also new method to detect lines
 
 
