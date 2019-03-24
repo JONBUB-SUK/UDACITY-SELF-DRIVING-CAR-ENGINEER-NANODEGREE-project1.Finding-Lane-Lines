@@ -3,7 +3,15 @@
 
 [//]: # (Image References)
 
-[image1-1]: ./images/1.1_Percaptron,Lambda.JPG "RESULT1"
+[image1-1]: ./images/1.GRAY_SCALE_IMAGE.png "RESULT1"
+[image1-2]: ./images/2.BLURED_IMAGE.png "RESULT2"
+[image1-3]: ./images/3.CANNY_EDGE_DETECTED_IMAGE.png "RESULT3"
+[image1-4]: ./images/4.MASKED_IMAGE.png "RESULT4"
+[image1-5]: ./images/5.AFTER_HOUGH_TRANSFORM_IMAGE.png "RESULT5"
+[image1-6]: ./images/6.FINAL_IMAGE.png "RESULT6"
+
+[image2-1]: ./output_video.gif "RESULT_GIF_1"
+[image2-2]: ./output_video_2.gif "RESULT_GIF_2"
 
 
 # Introduction
@@ -70,7 +78,8 @@ def grayscale(img):
     return cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 ```
 
-(이미지 : gray scale)
+![alt text][image1-1]
+
 
 
 ### 2. Apply Gaussian blur
@@ -82,7 +91,8 @@ def gaussian_blur(img, kernel_size):
     return cv2.GaussianBlur(img, (kernel_size, kernel_size), 0)
 ```
 
-(이미지 : after blur)
+![alt text][image1-2]
+
 
 
 ### 3. Apply Canny edge detection
@@ -95,7 +105,8 @@ def canny(img, low_threshold, high_threshold):
     return cv2.Canny(img, low_threshold, high_threshold)
 ```
 
-(이미지 : canny edge detection)
+![alt text][image1-3]
+
 
 
 ### 4. Apply region masking
@@ -128,7 +139,8 @@ def region_of_interest(img, vertices):
     return masked_image
 ```
 
-(이미지 : masked image)
+
+![alt text][image1-4]
 
 
 
@@ -235,7 +247,8 @@ def cal_line_end_point_right(x1,y1,x2,y2):
     return x1_end,y1_end,x2_end,y2_end
 ```
 
-(이미지 : after Hough transform)
+
+![alt text][image1-5]
 
 
 ### 6. Draw lines on original image
@@ -247,7 +260,7 @@ def weighted_img(img, initial_img, α=0.8, β=1., γ=0.):
 ```
 
 
-(이미지 : final image)
+![alt text][image1-6]
 
 
 
@@ -295,7 +308,8 @@ HTML("""
 This is gif images of final result
 
 
-(gif 이미지 : 최종 결과 짤)
+![alt text][image2-1]
+![alt text][image2-2]
 
 
 # Conclusion & Discussion
