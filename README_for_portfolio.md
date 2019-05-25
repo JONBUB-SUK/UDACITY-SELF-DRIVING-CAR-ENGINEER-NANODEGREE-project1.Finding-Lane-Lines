@@ -4,13 +4,6 @@
 
 [//]: # (Image References)
 
-[image1-1]: ./images/1.GRAY_SCALE_IMAGE.png "RESULT1"
-[image1-2]: ./images/2.BLURED_IMAGE.png "RESULT2"
-[image1-3]: ./images/3.CANNY_EDGE_DETECTED_IMAGE.png "RESULT3"
-[image1-4]: ./images/4.MASKED_IMAGE.png "RESULT4"
-[image1-5]: ./images/5.AFTER_HOUGH_TRANSFORM_IMAGE.png "RESULT5"
-[image1-6]: ./images/6.FINAL_IMAGE.png "RESULT6"
-
 [image2-1]: ./output_video.gif "RESULT_GIF_1"
 [image2-2]: ./output_video_2.gif "RESULT_GIF_2"
 
@@ -63,15 +56,10 @@ import math
 ```
 ```python
 def grayscale(img):
-    """Applies the Grayscale transform
-    This will return an image with only one color channel
-    but NOTE: to see the returned image as grayscale
-    (assuming your grayscaled image is called 'gray')
-    you should call plt.imshow(gray, cmap='gray')"""
+
     return cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 ```
 
-![alt text][image1-1]
 <img src="./images/1.GRAY_SCALE_IMAGE.png" width="400">
 
 
@@ -84,8 +72,7 @@ def gaussian_blur(img, kernel_size):
     return cv2.GaussianBlur(img, (kernel_size, kernel_size), 0)
 ```
 
-![alt text][image1-2]
-
+<img src="./images/2.BLURED_IMAGE.png" width="400">
 
 
 #### 3) Apply Canny edge detection
@@ -94,13 +81,11 @@ It receive blured image as input and return canny edge detected image
 
 ```python
 def canny(img, low_threshold, high_threshold):
-    """Applies the Canny transform"""
+
     return cv2.Canny(img, low_threshold, high_threshold)
 ```
 
-![alt text][image1-3]
-
-
+<img src="./images/3.CANNY_EDGE_DETECTED_IMAGE.png" width="400">
 
 #### 4) Apply region masking
 
@@ -111,29 +96,22 @@ formed from `vertices`. The rest of the image is set to black.
 ```python
 def region_of_interest(img, vertices):
 
-    #defining a blank mask to start with
     mask = np.zeros_like(img)   
     
-    #defining a 3 channel or 1 channel color to fill the mask with depending on the input image
     if len(img.shape) > 2:
         channel_count = img.shape[2]  # i.e. 3 or 4 depending on your image
         ignore_mask_color = (255,) * channel_count
     else:
         ignore_mask_color = 255
-        
-    #filling pixels inside the polygon defined by "vertices" with the fill color    
+ 
     cv2.fillPoly(mask, [vertices], ignore_mask_color)
     
-    #returning the image only where mask pixels are nonzero
     masked_image = cv2.bitwise_and(img, mask)
     
     return masked_image
 ```
 
-
-![alt text][image1-4]
-
-
+<img src="./images/4.MASKED_IMAGE.png" width="400">
 
 #### 5) Apply Hough transform
 
@@ -144,7 +122,8 @@ Using Hough transform, receive masked image and draw lines on image
 ```python
 def hough_lines(img, rho, theta, threshold, min_line_len, max_line_gap):
 
-    lines = cv2.HoughLinesP(img, rho, theta, threshold, np.array([]), minLineLength=min_line_len, maxLineGap=max_line_gap)
+    lines = cv2.HoughLinesP(img, rho, theta, threshold, np.array([]), 
+                            minLineLength=min_line_len, maxLineGap=max_line_gap)
     line_img = np.zeros((img.shape[0], img.shape[1], 3), dtype=np.uint8)
     draw_lines(line_img, lines)
     
@@ -156,7 +135,6 @@ def hough_lines(img, rho, theta, threshold, min_line_len, max_line_gap):
 ```python
 def draw_lines(img, lines, color=[255, 0, 0], thickness=10):
       
-    ### draw lines betwean both end points ###
     right_line = []
     left_line = []
     
@@ -165,7 +143,6 @@ def draw_lines(img, lines, color=[255, 0, 0], thickness=10):
     left_x = []
     left_y = []
     
-
     for line in lines:
         for x1,y1,x2,y2 in line:
             if x1 > 480:
@@ -237,8 +214,7 @@ def cal_line_end_point_right(x1,y1,x2,y2):
     return x1_end,y1_end,x2_end,y2_end
 ```
 
-
-![alt text][image1-5]
+<img src="./images/5.AFTER_HOUGH_TRANSFORM_IMAGE.png" width="400">
 
 
 #### 6) Draw lines on original image
@@ -249,9 +225,7 @@ def weighted_img(img, initial_img, α=0.8, β=1., γ=0.):
     return cv2.addWeighted(initial_img, α, img, β, γ)
 ```
 
-
-![alt text][image1-6]
-
+<img src="./images/6.FINAL_IMAGE.png" width="400">
 
 
 #### 7) Define process_image function : combine every function to apply video
@@ -266,7 +240,6 @@ def process_image(image):
     image_hough = hough_lines(image_masking, rho, theta, threshold, min_line_len, max_line_gap)
     image_weighted = weighted_img(image_hough, image, α=0.8, β=1., γ=0.)    
     
-
     return image_weighted
 ```
 
@@ -285,11 +258,7 @@ white_clip = clip1.fl_image(process_image) #NOTE: this function expects color im
 #### 9) Output video
 
 ```python
-HTML("""
-<video width="960" height="540" controls>
-  <source src="{0}">
-</video>
-""".format(white_output))
+HTML("""<video width="960" height="540" controls>  <source src="{0}"> </video>""".format(white_output))
 ```
 
 
