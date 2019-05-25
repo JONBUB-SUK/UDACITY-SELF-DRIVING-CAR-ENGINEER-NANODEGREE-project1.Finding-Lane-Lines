@@ -69,6 +69,7 @@ It receive gray scaled image as input and return blured image
 
 ```python
 def gaussian_blur(img, kernel_size):
+
     return cv2.GaussianBlur(img, (kernel_size, kernel_size), 0)
 ```
 
@@ -91,6 +92,7 @@ def canny(img, low_threshold, high_threshold):
 
 Only keeps the region of the image defined by the polygon
 formed from `vertices`. The rest of the image is set to black.
+
 `vertices` should be a numpy array of integer points.
 
 ```python
