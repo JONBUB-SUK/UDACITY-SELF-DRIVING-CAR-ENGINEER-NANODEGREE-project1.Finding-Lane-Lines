@@ -99,7 +99,7 @@ def region_of_interest(img, vertices):
     mask = np.zeros_like(img)   
     
     if len(img.shape) > 2:
-        channel_count = img.shape[2]  # i.e. 3 or 4 depending on your image
+        channel_count = img.shape[2]
         ignore_mask_color = (255,) * channel_count
     else:
         ignore_mask_color = 255
