@@ -90,8 +90,9 @@ def canny(img, low_threshold, high_threshold):
 
 #### 4) Apply region masking
 
-Only keeps the region of the image defined by the polygon
-formed from `vertices`. The rest of the image is set to black.
+Only keeps the region of the image defined by the polygon formed from `vertices`. 
+
+The rest of the image is set to black.
 
 `vertices` should be a numpy array of integer points.
 
