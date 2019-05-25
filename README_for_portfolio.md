@@ -10,17 +10,19 @@
 
 ## 1. Abstract
 
-The object of the project is finding lanes at driving car videos
+The purpose of this project is finding lanes at driving car videos
 
-There are some conditions to pass the project
+First of all, I assumed car is on the center of lanes
 
-1. Use Canny edge detection
+So I focused on finding lanes on masked image that is cropping both sides
 
-2. Use Hough transform
+There used many method to find lanes effectively
 
-3. Draw straight lines on detected lines
+I converted RGB image to grayscale, and used Gaussian blur, Canny edge detection, Hough transform
 
-4. Apply final function to video
+And finally draw lines on original image
+
+Final output is converted to video
 
 
 
