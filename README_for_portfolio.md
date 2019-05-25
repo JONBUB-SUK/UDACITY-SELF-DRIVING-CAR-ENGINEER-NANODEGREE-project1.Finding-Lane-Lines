@@ -166,7 +166,8 @@ def draw_lines(img, lines, color=[255, 0, 0], thickness=10):
     right_y_min = min(right_y)
     right_y_max = max(right_y)
     
-    right_x1, right_y1, right_x2, right_y2 = cal_line_end_point_right(right_x_min, right_y_min, right_x_max, right_y_max)
+    right_x1, right_y1, right_x2, right_y2 = 
+                cal_line_end_point_right(right_x_min, right_y_min, right_x_max, right_y_max)
        
     for line in left_line:
         for x1,y1,x2,y2 in line:
@@ -179,7 +180,8 @@ def draw_lines(img, lines, color=[255, 0, 0], thickness=10):
     left_y_min = min(left_y)
     left_y_max = max(left_y)          
     
-    left_x1, left_y1, left_x2, left_y2 = cal_line_end_point_left(left_x_min, left_y_max, left_x_max, left_y_min)
+    left_x1, left_y1, left_x2, left_y2 = 
+                cal_line_end_point_left(left_x_min, left_y_max, left_x_max, left_y_min)
     
     cv2.line(img, (right_x1, right_y1), (right_x2, right_y2), color, thickness)
     cv2.line(img, (left_x1, left_y1), (left_x2, left_y2), color, thickness)    
