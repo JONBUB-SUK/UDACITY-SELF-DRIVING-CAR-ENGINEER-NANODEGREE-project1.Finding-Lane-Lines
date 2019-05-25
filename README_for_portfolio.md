@@ -72,7 +72,7 @@ def grayscale(img):
 ```
 
 ![alt text][image1-1]
-
+<img src="./images/1.GRAY_SCALE_IMAGE.png" width="400">
 
 
 #### 2) Apply Gaussian blur
