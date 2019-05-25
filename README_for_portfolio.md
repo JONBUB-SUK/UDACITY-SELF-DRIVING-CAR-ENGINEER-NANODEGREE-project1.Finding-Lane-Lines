@@ -1,5 +1,5 @@
 # SELF DRIVING CAR NANODEGREE
-# project1.Finding Lane Lines
+# project1. Finding Lane Lines
 
 
 [//]: # (Image References)
