@@ -16,7 +16,7 @@ First of all, I assumed car is on the center of lanes
 
 So I focused on finding lanes on masked image that is cropping both sides
 
-There used many method to find lanes effectively
+I used many methods to find lanes effectively
 
 I converted RGB image to grayscale, and used Gaussian blur, Canny edge detection, Hough transform
 
